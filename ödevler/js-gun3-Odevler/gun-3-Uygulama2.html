@@ -1,0 +1,81 @@
+<!-- 
+// 10) ekrana 2 input ve hesap butonlarını koy (çarpma bölme çıkarma ve toplama) hangi butona basarsa o işlemi yapıp alert olarak ekrana yazdır-->
+
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="sayi">
+    <span id="operand">+</span>
+    <input type="text" name="" id="sayi2">
+
+    <button onclick="Sum()" onmouseover="Operand('Topla')">Topla</button>
+    <button onclick="Multiply()" onmouseover="Operand('Çarp')">Çarp</button>
+    <button onclick="Divide()" onmouseover="Operand('Böl')">Böl</button>
+    <button onclick="Sub()" onmouseover="Operand('Çıkar')">Çıkar</button>
+
+</body>
+</html>
+<script>
+function Operand(operand)
+{
+    if(operand=='Topla')
+    {
+        document.getElementById("operand").innerHTML ="+";
+    }
+    else if(operand=='Çarp')
+    {
+        document.getElementById("operand").innerHTML ="*";
+    }
+    else if(operand=='Böl')
+    {
+        document.getElementById("operand").innerHTML ="/";
+    }
+    else if(operand=='Çıkar')
+    {
+        document.getElementById("operand").innerHTML ="-";
+    }
+
+}
+
+function Sum()
+{
+    let inputValue=Number(document.getElementById("sayi").value);
+    let inputValue1=Number(document.getElementById("sayi2").value);   
+    let result=inputValue+inputValue1;
+    alert(result);
+}
+
+function Multiply()
+{
+    let inputValue=Number(document.getElementById("sayi").value);
+    let inputValue1=Number(document.getElementById("sayi2").value);
+    
+    let result=inputValue*inputValue1;
+    alert(result);
+}
+
+function Divide()
+{
+    let inputValue=Number(document.getElementById("sayi").value);
+    let inputValue1=Number(document.getElementById("sayi2").value);
+    
+    let result=inputValue/inputValue1;
+    alert(result);
+}
+
+function Sub()
+{
+    let inputValue=Number(document.getElementById("sayi").value);
+    let inputValue1=Number(document.getElementById("sayi2").value);
+    
+    let result=inputValue-inputValue1;
+    alert(result);
+}
+</script>

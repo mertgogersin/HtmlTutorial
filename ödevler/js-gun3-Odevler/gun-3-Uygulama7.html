@@ -1,0 +1,46 @@
+<!--14) Ekrana bir buton 6 tane de label koy. Butona tıkladığında 1 ile 49 arasında rastgele 6 sayı üretip bunları tek tek labellara yazsın. Sayısal loto programı ( aynı sayı olmamalı )-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="asd">
+
+        <label>0</label>
+        <label>1</label>
+        <label>2</label>
+        <label>3</label>
+        <label>4</label>
+        <label>5</label>
+    </div>
+    <button onclick="SayiBas()" id="sayi">Sayı Bas</button>
+
+</body>
+
+</html>
+<script>
+    function SayiBas() {
+        let labels = document.getElementsByTagName("label");
+        labels[0].innerHTML = Math.floor(Math.random() * 49) + 1;
+        for (var i = 1; i < labels.length; i++) {
+            labels[i].innerHTML = Math.floor(Math.random() * 49) + 1;;
+            for (var j = 0; j < i; j++) {
+                if (labels[i].innerHTML == labels[j].innerHTML) {    
+                    labels[i].innerHTML =Math.floor(Math.random() * 49) + 1;;
+                    j = 0;
+                }
+            }
+        }
+    }
+
+
+</script>

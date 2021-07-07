@@ -1,0 +1,93 @@
+<!-- 1) bir numeric, bir string, bir boolean değişken tanımla
+2) numeric ve string 5 elemanlı 2 dizi tanımla
+3) name, unitPrice, stock özellikleri olan bir obje tanımla ve objeyi doldur
+4) yukarıdaki tanımladığın objeden 5 tane daha oluştur ve bir dizide push et
+5) oluşturduğun dizide kaç eleman var console a yazdır
+6) oluşturduğun dizinin son elemanını çıkar
+7) oluşturduğun dizinin ilk elemanını çıkar
+8) oluşturduğun dizide name alanı 'samsung' olan elemanı bulup console yazdır ( js find komutu)
+9) oluştrudğun dizide unitPrice 100 den büyük olanları ekrana yazdır ( js filter komutu ) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //1.soru
+    var name ="Mert";
+    var number =22;
+    var isOnline=false;
+    //2.soru
+    let names =["ali","mert","ayşenur","gizem","uğur"];
+    let numbers=[2,55,3,43,57];
+    //3.soru
+    let product ={
+        name:"Bread",
+        unitPrice:2.5,
+        stock:10
+    };
+    
+    //4.soru
+    let product1 ={
+        name:"Bread",
+        unitPrice:2.5,
+        stock:10
+    };
+    let product2 ={
+        name:"TV",
+        unitPrice:2500,
+        stock:42
+    };
+    let product3 ={
+        name:"Potato",
+        unitPrice:1,
+        stock:150
+    };
+    let product4 ={
+        name:"Tomato",
+        unitPrice:3,
+        stock:56
+    };
+    let product5 ={
+        name:"samsung",
+        unitPrice:3000,
+        stock:200
+    };
+    let products=[];
+    products.push(product1);
+    products.push(product2);
+    products.push(product3);
+    products.push(product4);
+    products.push(product5);
+    console.log(products);
+    //5.soru
+
+    //console.log(products.length);
+
+    //6.soru
+   // products.splice(4,1);
+    //console.log(products);
+
+    //7.soru
+
+    //products.splice(1,1);
+    //console.log(products);
+
+    //8.soru
+    const found =products.find(e=>e.name=="samsung");
+   // console.log(found);
+
+    //9.soru
+    const filter =products.filter(e=>e.unitPrice>100);
+    console.log(filter);
+
+  
+</script>

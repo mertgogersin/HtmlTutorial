@@ -1,0 +1,53 @@
+<!--13) Ekrana 3 buton koy. Hangi butona tıklanırsa o buton kendini yoketsin (her butona ayrı ayrı onclikc function yazacaksın??, display none yapmak!)-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="asd">
+
+        <button id="Button1">1</button>
+        <button id="Button2">2</button>
+        <button id="Button3">3</button>
+    </div>
+
+    <button onclick="ResetButtons()" style="display: block;">Reset</button>
+
+</body>
+
+</html>
+<script>
+    let buttons = document.getElementById("asd").getElementsByTagName("button");
+
+
+    var myFunction = function (x) {
+   
+    buttons[x].style.display = "none";
+       
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', myFunction(i));
+    }
+
+    /*function DeleteButton(x) {
+    var button= document.getElementById("Button" + x);
+    button.style.display="none";
+    }*/
+    function ResetButtons() {
+        let buttons = document.getElementById("asd").getElementsByTagName("button");
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = "inline-block";
+
+        }
+
+    }
+</script>

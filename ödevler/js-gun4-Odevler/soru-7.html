@@ -1,0 +1,27 @@
+<!--7) Ekrana bir buton koy. Butona tıkladığında sadece ilk 5 suppleri console a yazdır.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id ="getData">Get Data</button>
+</body>
+</html>
+<script>
+    let button=document.getElementById('getData').addEventListener('click',function(){
+        fetch('https://northwind.vercel.app/api/suppliers')
+        .then(res=>res.json())
+        .then(data=>{
+            const dta=data.slice(0,5);
+            dta.map((item)=>{
+                console.log(item);
+            })
+        })
+    })
+    
+</script>

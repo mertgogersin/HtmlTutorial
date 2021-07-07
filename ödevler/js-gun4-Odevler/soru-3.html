@@ -1,0 +1,73 @@
+<!--3) en az 5 inputtan oluşan bir yapı tasarla. bu inputtan aldığun verileri products en pointine gönder ve bir post işlemi yap.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Product Name:</label>
+        <input type="text" name="" id="name">
+    </div>
+    <div>
+        <label>Category ID:</label>
+        <input type="text" name="" id="categoryID">
+    </div>
+    <div>
+        <label>Unit Price:</label>
+        <input type="text" name="" id="unitPrice">
+    </div>
+    <div>
+        <label>Units in Stock:</label>
+        <input type="text" name="" id="unitsInStock">
+    </div>
+    <div>
+        <label>Supplier ID:</label>
+        <input type="text" name="" id="supplierID">
+    </div>
+
+    <div>
+        <button onclick="Add()">Add</button>
+    </div>
+</body>
+
+</html>
+<script>
+    function Add(){
+        let productName=document.getElementById('name').value;
+        let catID=document.getElementById('categoryID').value;
+        let supID=document.getElementById('supplierID').value;
+        let price=document.getElementById('unitPrice').value;
+        let stock=document.getElementById('unitsInStock').value;
+        
+        let newProduct ={
+            name:productName,
+            categoryID:catID,
+            supplierID:supID,
+            unitPrice:price,
+            unitsInStock:stock
+        };
+
+        let requestOptions = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            //js objesini json a çevirir
+            body: JSON.stringify(newProduct)
+        }
+
+        fetch('https://northwind.vercel.app/api/products', requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        })
+
+    }
+</script>

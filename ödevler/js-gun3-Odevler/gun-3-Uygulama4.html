@@ -1,0 +1,21 @@
+<!--12) Ekrana bir buton koy. Butona her tıklandığında 100-500 arası rastgele bir width değerini kendine atasın ( js random!!)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="RandomNumber()" id="Button">Rastgele Genişlik ver</button>
+</body>
+</html>
+<script>
+function RandomNumber()
+{
+    var rnd =Math.floor(Math.random()*400) + 100;
+    var button=document.getElementById("Button");
+    button.style.width=rnd + 'px';
+}
+</script>

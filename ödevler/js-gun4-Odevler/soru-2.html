@@ -1,0 +1,123 @@
+<!--2) https://northwind.vercel.app/api/categories adresinden kategorileri fetch ile çek ve bir table a yazdır en az 2 kolon
+** Yazdırdıktan sonra  herhangi bir tr ye tıklandığın o tr yi tasarımsal olarak uçur
+**** 2. soruda oluşturduğun tablonun tepesine bir buton koy. Ona tıklandığında veriler categoryName e göre sıralansın???-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="GetData()">
+    <button id='addData'>Add Data</button>
+    <button onclick="Sort()" id='btn'>Sort</button>
+
+    <table id='categoryTable'>
+        <tr>
+
+            <th>Category Name</th>
+            <th>Description</th>
+        </tr>
+
+
+    </table>
+
+</body>
+
+</html>
+<script>
+    function GetData() {
+        fetch('https://northwind.vercel.app/api/categories')
+            .then((res) => res.json())
+            .then((data) => {
+
+                data.map((item) => {
+
+                    let newtr1 = document.createElement('tr');
+                    let newtd1 = document.createElement('td');
+                    let newtd2 = document.createElement('td');
+                    newtd1.innerHTML = item.name;
+                    newtd2.innerHTML = item.description;
+                    newtr1.addEventListener("click", function () { this.hidden = true; });
+                    newtr1.appendChild(newtd1);
+                    newtr1.appendChild(newtd2);
+                    document.getElementById('categoryTable').appendChild(newtr1);
+                });
+
+            })
+    }
+    let category = {
+        name: 'Elektronik',
+        description: 'Teknolojik'
+    };
+    document.getElementById('addData').addEventListener('click', function () {
+        fetch('https://northwind.vercel.app/api/categories', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(category)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+
+    })
+    /*data.sort((a,b)=>{
+                     let fa=a.name.toLowerCase(),
+                         fb=b.name.toLowerCase();
+                     if(fa<fb){
+                         return -1;
+                     }
+                     if(fa>fb){
+                         return 1;
+                     }
+                     return 0;
+ 
+                 });
+*/
+    function Sort() {
+        let tbl = document.getElementById('categoryTable');
+
+
+        tbl.deleteRow(i);
+
+        
+
+        /*fetch('https://northwind.vercel.app/api/categories')
+            .then((res) => res.json())
+            .then((data) => {
+
+                data.map((item) => {
+
+                    data.sort((a, b) => {
+                        let fa = a.name.toLowerCase(),
+                            fb = b.name.toLowerCase();
+                        if (fa < fb) {
+                            return -1;
+                        }
+                        if (fa > fb) {
+                            return 1;
+                        }
+                        return 0;
+
+                    });
+                    let newtr1 = document.createElement('tr');
+                    let newtd1 = document.createElement('td');
+                    let newtd2 = document.createElement('td');
+                    newtd1.innerHTML = item.name;
+                    newtd2.innerHTML = item.description;
+                    newtr1.addEventListener("click", function () { this.hidden = true; });
+                    newtr1.appendChild(newtd1);
+                    newtr1.appendChild(newtd2);
+                    document.getElementById('categoryTable').appendChild(newtr1);
+                });
+
+            })*/
+    }
+
+</script>

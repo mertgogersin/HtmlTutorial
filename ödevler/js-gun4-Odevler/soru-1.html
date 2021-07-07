@@ -1,0 +1,66 @@
+<!--1) https://northwind.vercel.app/api/products adresinden ürünleri fetch ile çek ve bir table a yazdır. table da en az
+3 kolon olsun-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    th{
+        text-decoration: underline;
+    }
+</style>
+<body onload="GetData()">
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Units in Stock</th>
+        </tr>
+        <tr>
+            <td id="productName"></td>
+            <td id="unitPrice"></td>
+            <td id="unitsInStock"></td>
+        </tr>
+       
+
+    </table>
+</body>
+
+</html>
+<script>
+    function GetData() {
+        fetch('https://northwind.vercel.app/api/products')
+            .then((res) => res.json())
+            .then((data) => {
+                data.map((item) => {
+
+                    let newtr = document.createElement('tr');
+                    newtr.innerHTML = item.name;
+                    document.getElementById('productName').append(newtr);
+
+                });
+                data.map((item) => {
+
+                    let newtr = document.createElement('tr');
+                    newtr.innerHTML = item.unitPrice;
+                    document.getElementById('unitPrice').append(newtr);
+
+                });
+                data.map((item) => {
+
+                    let newtr = document.createElement('tr');
+                    newtr.innerHTML = item.unitsInStock;
+                    document.getElementById('unitsInStock').append(newtr);
+
+                });
+
+            });
+
+    }
+
+</script>
