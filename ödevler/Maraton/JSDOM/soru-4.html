@@ -1,0 +1,25 @@
+<!--4) Ekrana bir input bir buton koy. Butona tıkladığında inputa girilen sayıya kadar olan sayıların toplamını console a yazdırsın-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id='input'>
+    <button id='btn'>Topla</button>
+</body>
+</html>
+<script>
+    document.getElementById('btn').addEventListener('click',function(){
+        let num=document.getElementById('input').value;
+        let sayi=0;
+        for(let i=0;i<=num;i++)
+        {
+            sayi+=i;
+        }
+        console.log(sayi);
+    })
+</script>

@@ -1,0 +1,64 @@
+<!--16) https://northwind.vercel.app/api/categories den dataları çekip console a yazdır
+17) https://northwind.vercel.app/api/categories adresinde kaç data olduğunu çekip console a yazdır
+18) https://northwind.vercel.app/api/customers adresindeki dataları çekip console a yazdır
+18) https://northwind.vercel.app/api/products ürünlerin unitPrice toplamını console a yazdır. ( önce çektiğimiz array da herhangi bir döngüyle döneceğiz. Sonra scope dışında tanımladığımız bir toplam değerine bu değerleri ekleyip console da yazdıracağız)
+19) **  https://northwind.vercel.app/api/orders country değeri USA olan siparişleri console a yazdır-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //16.Soru
+    let categories=[];
+    /*fetch('https://northwind.vercel.app/api/categories')
+    .then(res=>res.json())
+    .then(data=>{
+        data.map(item=>{
+            categories.push(item);
+        })
+        console.log(categories);
+    })*/
+
+    //17.Soru
+   /* fetch('https://northwind.vercel.app/api/categories')
+    .then(res=>res.json())
+    .then(data=>{
+        console.log(data.length);
+    })*/
+        
+   //18.Soru
+
+  /* fetch('https://northwind.vercel.app/api/customers')
+   .then(res=>res.json())
+   .then(data=>{
+       console.log(data);
+   })*/
+
+   //19.Soru
+   let prices=0;
+   /*fetch('https://northwind.vercel.app/api/products')
+   .then(res=>res.json())
+   .then(data=>{
+        for(let i=0;i<data.length;i++){
+            prices+=data[i].unitPrice;
+        }
+        console.log(prices);
+   })*/
+ 
+   //20.Soru
+   fetch('https://northwind.vercel.app/api/orders')
+   .then(res=>res.json())
+   .then(data=>{
+       
+       console.log(data.filter(e=>e.shipAddress.country=='USA'));
+   })
+</script>

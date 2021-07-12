@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+
+</head>
+<style>
+    #tictactoeTable {
+        height: 300px;
+        width: 300px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto auto;
+        border-style: solid;
+    }
+</style>
+
+<body>
+    <div id='tictactoeTable'>
+        <button id='btn1'></button>
+        <button id='btn2'></button>
+        <button id='btn3'></button>
+        <button id='btn4'></button>
+        <button id='btn5'></button>
+        <button id='btn6'></button>
+        <button id='btn7'></button>
+        <button id='btn8'></button>
+        <button id='btn9'></button>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            var turn = true;
+            $(':button').on({
+                click: function () {
+                    if (turn == true) {
+                        this.innerHTML = 'X';
+                        turn = false;
+                        this.disabled = true;
+                        var winnerCheck = Winner(this.innerHTML);
+                        if (winnerCheck==true) {
+
+                            ResetTable();
+                        }
+                    }
+                    else {
+                        this.innerHTML = 'O';
+                        turn = true;
+                        this.disabled = true;
+                        var winnerCheck = Winner(this.innerHTML);
+                        if (winnerCheck==true) {
+
+                            ResetTable();
+                        }
+                    }
+                },
+                mouseenter: function () {
+                    if (turn == true) {
+                        this.innerHTML = 'X';
+                    }
+                    else {
+                        this.innerHTML = 'O';
+                    }
+                },
+                mouseleave: function () {
+                    this.innerHTML = '';
+                }
+            });
+        });
+        let buttons = []
+        function Winner(data) {
+            buttons = document.getElementsByTagName('button');
+            //horizontal
+            if (buttons[0].innerHTML == buttons[1].innerHTML && buttons[1].innerHTML == buttons[2].innerHTML &&buttons[0].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            if (buttons[3].innerHTML == buttons[4].innerHTML && buttons[4].innerHTML == buttons[5].innerHTML&&buttons[3].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            else if (buttons[6].innerHTML == buttons[7].innerHTML && buttons[7].innerHTML == buttons[8].innerHTML&&buttons[6].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            //vertical
+            else if (buttons[0].innerHTML == buttons[3].innerHTML && buttons[3].innerHTML == buttons[6].innerHTML&&buttons[0].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            else if (buttons[1].innerHTML == buttons[4].innerHTML && buttons[4].innerHTML == buttons[7].innerHTML&&buttons[1].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            else if (buttons[2].innerHTML == buttons[5].innerHTML && buttons[5].innerHTML == buttons[8].innerHTML&&buttons[2].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            //diagonal
+            else if (buttons[0].innerHTML == buttons[4].innerHTML && buttons[4].innerHTML == buttons[8].innerHTML&&buttons[0].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            else if (buttons[2].innerHTML == buttons[4].innerHTML && buttons[4].innerHTML == buttons[6].innerHTML&&buttons[2].disabled==true) {
+                alert(data + ' kazandı');
+                return true;
+            }
+            return false;
+        }
+        function ResetTable() {
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].innerHTML = '';
+                buttons[i].disabled = false;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

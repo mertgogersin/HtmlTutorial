@@ -1,0 +1,63 @@
+<!--5) Ekrana bir input bir buton koy. Butona tıkladığında inputtaki sayı kadar butonu ekrana append etsin.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='div'>
+        <div>
+            <input type="text" name="" id='input'>
+            <button id='btn'>Saydır</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    let btns = [];
+    let div = document.createElement('div');
+    div.id = 'addedBtns';
+    div.style.display='flex';
+    div.style.flexWrap='wrap';
+    document.getElementById('btn').addEventListener('click', function () {
+        if(btns.length>0)
+        {
+         for(let i = 0; i < btns.length; i++)
+         {
+             btns[i].style.display='none';
+         }
+        }
+         num = document.getElementById('input').value;
+
+        for (let i = 0; i < num; i++) {
+            let button = document.createElement('button');
+            button.innerHTML = 'Button';
+            button.style.backgroundColor = 'red';
+            button.style.display = 'flex';
+            button.style.flexDirection = 'column';     
+            button.style.width='50px';
+            button.style.height='50px';
+            button.style.display='flex';      
+            div.appendChild(button);
+            document.getElementById('div').appendChild(div);
+            document.getElementById('div').style.display = 'flex';
+
+        }
+
+        CheckDiv();
+    
+    })
+    function FillList(x) {
+        btns.push(x);
+    }
+    function CheckDiv() {
+        btns = document.getElementById('addedBtns').getElementsByTagName('button');
+    }
+</script>

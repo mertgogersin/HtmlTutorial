@@ -1,0 +1,39 @@
+<!--2) Ekrana bir 3 input bir buton koy. Butona tıkladığında en büyük sayıyı ekrana yazdırsın-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="">
+    <input type="text" name="">
+    <input type="text" name="">
+    <button id='btn'>En büyük sayıyı bas</button>
+</body>
+
+</html>
+<script>
+
+    document.getElementById('btn').addEventListener('click', function () {
+
+        let numbers = [];
+        let inputs = document.getElementsByTagName('input');
+        for (let i = 0; i < inputs.length; i++) {
+            numbers.push(Number(inputs[i].value));
+        }
+        console.log(numbers)
+        let sayi=0;
+        for (let i = 0; i < numbers.length; i++) {
+            if(numbers[i]>sayi)
+            {
+                sayi=numbers[i];
+            }
+        }
+        console.log(sayi);
+    })
+</script>

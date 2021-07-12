@@ -1,0 +1,47 @@
+<!-- ***** https://northwind.vercel.app/api/orders her bir siparişin TOPLAM tutarını console a yazdır-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="GetPrices()">
+    
+</body>
+
+</html>
+<script>
+    let orders = [];
+    let prices = []
+    
+    function GetPrices() {
+        fetch('https://northwind.vercel.app/api/orders')
+            .then(res => res.json())
+            .then(data => {
+                data.map(item => {
+                    
+                    let sayi = 0;
+                    for (let j = 0; j < item.details.length; j++) {
+                        var price = item.details[j].unitPrice * item.details[j].quantity * (1 - item.details[j].discount)
+                        sayi += price;
+                    }
+                    let order = {
+                        Id: item.id,
+                        Price: sayi
+                    };
+                    prices.push(order);
+
+
+                })
+                console.log(prices);
+            })
+        // console.log(orders);
+
+
+    }
+    
+</script>

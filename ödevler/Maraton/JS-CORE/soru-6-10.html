@@ -1,0 +1,64 @@
+<!--6) 4 propertisi olan bir webUser objesi tanımla ve bu objeyi console a yazdır
+7) 4 propertisi olan bir product objesi tanımla ve bu objeyi console a yazdır.
+8) 4 elemanlı metinsel bir dizi tanımla. Her elemanı for ile dönerek console a yazdır
+9) 4 elemanlı sayısal bir dizi tanımla. Her elemanın 1.18 katını for ile dönerek console a yazdır
+10) 4 elemanlı bir obje dizisi tanımla ve console a yazdır.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //6.Soru
+    let webUser={
+        name:'asd',
+        surname:'qwe',
+        email:'asdq@gmail.com',
+        password:'1234'
+    };
+    //console.log(webUser);
+
+    //7.Soru
+    let product={
+        name:'ekmek',
+        unitPrice:2,
+        unitsInStock:22,
+        unitsOnOrder:5
+    };
+   // console.log(product);
+
+    //8.Soru
+    let metinler=['a','b','c','d'];
+    for(let i=0;i<metinler.length;i++){
+        //console.log(metinler[i]);
+    }
+
+    //9.Soru
+    let sayilar=[2,6,11,28];
+    for(let i=0;i<sayilar.length;i++){
+        //console.log(sayilar[i]*1.18);
+    }
+
+    //10.Soru
+    let myObjects=[]
+    let order={
+        id:1231,
+        customer:'asdad',
+        description:'dfshfgjfdgj'
+    };
+    let employee={
+        firstName:'dfdfhd',
+        lastName:'fgfdgjdf',
+        Title:'awqwe'
+    };
+    myObjects.push(webUser,product,order,employee);
+    console.log(myObjects);
+</script>

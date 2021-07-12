@@ -1,0 +1,73 @@
+<!--21) Ekrana 3 input ve bir buton koy. Butona tıkladığında https://northwind.vercel.app/api/suppliers adresine bir data POST etsin. ( fetch POST işlemi )-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    #container{
+        display: flex;
+    
+    }
+</style>
+<body>
+    <div id='container'>
+        <div>
+            <label>Company Name: </label>
+            <label>Contact Name: </label>
+            <label>Contact Title: </label>
+        </div>
+        <div>
+            
+            <input type="text" name="" id='cmpName'>
+            <input type="text" name="" id='cntName'>
+            <input type="text" name="" id='cntTitle'>
+        </div>
+       
+        
+    </div>
+    <button id='btn'>POST</button>
+</body>
+
+</html>
+<script>
+    document.getElementById('btn').addEventListener('click',function(){
+        let compName=document.getElementById('cmpName').value;
+        let contName=document.getElementById('cntName').value;
+        let contTitle=document.getElementById('cntTitle').value;
+
+        let supplier ={
+            CompanyName:compName,
+            ContactName:contName,
+            ContactTite:contTitle
+        };
+
+        fetch('https://northwind.vercel.app/api/suppliers',{
+            method:'POST',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(supplier)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
+        
+    })
+</script>

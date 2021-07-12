@@ -1,5 +1,8 @@
 <!--1) https://northwind.vercel.app/api/products adresinden ürünleri fetch ile çek ve bir table a yazdır. table da en az
-3 kolon olsun-->
+3 kolon olsun
+6)**** 1. soruda oluşturduğun tablonun tepesine bir input bir button koy. butona tıkladığında inputtaki veriye göre
+search işlemi yapıp console a veya dilediğin yere datayı yazdırsın.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,32 +10,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
     <title>Document</title>
 </head>
 <style>
-    th{
+    th {
         text-decoration: underline;
     }
 </style>
+
 <body onload="GetData()">
-    <table>
+    <input type="text" name="" id='input'>
+    <button id='btn'>Filter</button>
+    <table id='table'>
         <tr>
             <th>Product Name</th>
             <th>Unit Price</th>
             <th>Units in Stock</th>
         </tr>
-        <tr>
-            <td id="productName"></td>
-            <td id="unitPrice"></td>
-            <td id="unitsInStock"></td>
-        </tr>
-       
+
+
 
     </table>
 </body>
 
 </html>
 <script>
+    let products = []
     function GetData() {
         fetch('https://northwind.vercel.app/api/products')
             .then((res) => res.json())
@@ -40,27 +45,62 @@
                 data.map((item) => {
 
                     let newtr = document.createElement('tr');
-                    newtr.innerHTML = item.name;
-                    document.getElementById('productName').append(newtr);
+                    let newtd1 = document.createElement('td');
+                    let newtd2 = document.createElement('td');
+                    let newtd3 = document.createElement('td');
+                    let prod = {
+                        Name: item.name,
+                        UnitPrice: item.unitPrice,
+                        UnitsInStock: item.unitsInStock
+                    };
+                    products.push(prod);
+                    newtd1.innerHTML = item.name;
+                    newtd2.innerHTML = item.unitPrice;
+                    newtd3.innerHTML = item.unitsInStock;
+                    newtr.appendChild(newtd1);
+                    newtr.appendChild(newtd2);
+                    newtr.appendChild(newtd3);
+
+                    document.getElementById('table').appendChild(newtr);
 
                 });
-                data.map((item) => {
 
-                    let newtr = document.createElement('tr');
-                    newtr.innerHTML = item.unitPrice;
-                    document.getElementById('unitPrice').append(newtr);
-
-                });
-                data.map((item) => {
-
-                    let newtr = document.createElement('tr');
-                    newtr.innerHTML = item.unitsInStock;
-                    document.getElementById('unitsInStock').append(newtr);
-
-                });
 
             });
 
     }
+    let rows=0;
+    document.getElementById('btn').addEventListener('click', function () {
+        let input = document.getElementById('input').value;
+        let tbl = document.getElementById('table');
+        rows=tbl.rows.length;
+        console.log(rows);
+        if (rows>1) {
 
+            for (let i = 0; i < rows-1; i++) {
+                tbl.deleteRow(1);
+            }
+        }
+        
+        fetch('https://northwind.vercel.app/api/products')
+            .then((res) => res.json())
+            .then(data => {
+                let filteredData = _.filter(data, e => e.name == input);
+                filteredData.map(item => {
+                    let newtr = document.createElement('tr');
+                    let newtd1 = document.createElement('td');
+                    let newtd2 = document.createElement('td');
+                    let newtd3 = document.createElement('td');
+                    newtd1.innerHTML = item.name;
+                    newtd2.innerHTML = item.unitPrice;
+                    newtd3.innerHTML = item.unitsInStock;
+                    newtr.appendChild(newtd1);
+                    newtr.appendChild(newtd2);
+                    newtr.appendChild(newtd3);
+
+                    document.getElementById('table').appendChild(newtr);
+                })
+                console.log(filteredData);
+            })
+    })
 </script>

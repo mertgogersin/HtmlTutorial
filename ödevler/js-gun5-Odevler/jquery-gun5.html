@@ -1,0 +1,120 @@
+<!--1) Ekrana bir input bir buton koy. Butona tıklandığında inputtan aldığı datayı büyük harflerle console a yazsın
+2) Ekrana iki input bir buton koy. Butona tıklandığında inputtan aldığı değerleri çarpıp console a yazdırsın ( Number a çevirebilirsin)
+3) Ekrana bir buton ve bir p elementi koy. Butona tıkladığında p elementinin içeriğine 'Bilge Adam' yazsın
+4) Ekrana bir buton ve bir input koy. Butona tıklandığında inputtan aldığı değeri body arkaplan rengi yapsın
+
+* Ekrana genişliği ve yüksekliği belli olan bir div koy. Arkaplan rengi de olsun. Div üzerine her tıklandığında kendine rastgele bir genişlik ve yükseklik atasın ( 0 - 500 arası)
+ 
+* Ekrana bir buton bir p ve bir span koy. Butona tıkladığında tüm elementleri yok etsin (body içeriğini boşaltabilirsin)
+
+* Ekrana genişliği ve yüksekliği belli olan 3 div koy. Butona tıkladığında rastgele ürettiği bir sayıyı ( 1-500 arasında ) bu divlerin genişlik ve yüksekliğine versin-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color:red;
+        display:inline-block;
+    }
+    #box2 {
+        width: 100px;
+        height: 100px;
+        background-color:blue;
+        display:inline-block;
+    }
+    #box3 {
+        width: 100px;
+        height: 100px;
+        background-color:black;
+        display:inline-block;
+    }
+</style>
+
+<body>
+    <!--1.soru
+
+  <input type="text" name="" id="data">
+  <button>Konsola Yaz</button>-->
+
+    <!--2.SORU
+  <input type="text" name="" id="data1">
+  <input type="text" name="" id="data2">
+  <button>Çarp</button>-->
+
+    <!--3.SORU
+  <p></p>
+  <button>Yazdır</button>-->
+
+    <!--4.SORU
+  <input type="text" name="">
+  <button>Boya</button>-->
+
+    <!--5.SORU
+    <div id='box'></div>
+    <button>Bas</button>-->
+
+    <!--6.SORU
+    <p>asdasd</p>
+    <span>qweqwe</span>
+    <button>Sil</button>-->
+
+    <!--7.SORU-->
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+        <button>Bas</button>
+</body>
+
+</html>
+<script>
+    //1.Soru
+    /*  $('button').click(function(){
+          let dta=$('#data').val();
+          console.log(dta.toUpperCase());
+      })*/
+
+    //2.Soru
+    /* $('button').click(function(){
+         let x=Number($('#data1').val());
+         let y=Number($('#data2').val());
+         console.log(x*y);
+     })*/
+
+    //3.Soru
+    /* $('button').click(function(){
+         $('p').text('Bilge Adam');
+     })*/
+
+    //4.Soru
+    /*$('button').click(function(){
+        let color=$('input').val();
+        $('body').css('background-color',color);
+    })*/
+    //5.Soru
+   /* $('button').click(function(){
+        let x=Math.floor(Math.random()*500);
+        let y=Math.floor(Math.random()*500);
+        $('div').css('width',x).css('height',y);
+    })*/
+    //6.Soru
+    /*$('button').click(function(){
+        $('body').remove();
+    })*/
+    //7.Soru
+    $('button').click(function(){
+        let x=Math.floor(Math.random()*500)+1;
+        let y=Math.floor(Math.random()*500)+1;
+        $('div').css('width',x).css('height',y);
+    })
+</script>
